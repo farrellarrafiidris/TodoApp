@@ -1,7 +1,8 @@
-export default function Counter() {
+
+export default function Counter({totalTodosNumber ,completedTodosCount}) {
   return (
     <p>
-      <b>0</b>/ 0 Completed
+      <b>{totalTodosNumber}</b>/ {completedTodosCount} Completed
     </p>
   );
 }
