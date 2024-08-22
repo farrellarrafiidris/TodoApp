@@ -1,22 +1,15 @@
 import { useState } from "react";
 import Button from "./Button";
 
-export default function AddTodoForm({ todos, setTodos }) {
+export default function AddTodoForm({handlerAddTodos }) {
   const [todoText, setTodoText] = useState("");
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        if (todos.length >= 3) {
-          alert("You have to login for add more list");
-          return;
-        } else {
-        setTodos((prev) => [
-          ...prev,
-          { id: prev + 1, text: todoText, isComplete: false },
-        ]);
+        handlerAddTodos(todoText)
         setTodoText(""); // Reset input field after submission
-      }}}
+      }}
     >
       <h2 className="font-md text-[#231d15]">Add todo</h2>
       <input
