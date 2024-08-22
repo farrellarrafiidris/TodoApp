@@ -1,19 +1,43 @@
-const initialTodo = [
-  "But Lambo",
-  "But Audi",
-  "But Nismo",
-  "But GOAT",
-  "But HER MUM",
-];
+import { useState } from "react";
+import DeleteButton from "./DeleteButton";
 export default function Todolist() {
+  const [todos, setTodos] = useState([
+      {
+        id: 1,
+        text:"Buy a House",
+        isComplete: false,  
+      },
+      {
+        id: 2,
+        text:"Buy a School",
+        isComplete: false,  
+      },
+      {
+        id: 3,
+        text:"Buy a Slave",
+        isComplete: false,  
+      },
+      {
+        id: 4,
+        text:"Buy a Mine",
+        isComplete: false,  
+      },
+      {
+        id: 5,
+        text:"Buy a Box",
+        isComplete: true,    
+      },
+    ] );
   return (
     <ul>
-      {initialTodo.map((todo, index) => (
+      {todos.map((todo) => (
         <li
-          key={index}
-          className="flex justify-between items-center px-8 h-[50px] text-[14px] cursor-pointer border-b border-slate-200"
+        key={todo.id}
+        className="flex justify-between items-center px-8 h-[50px] text-[14px] cursor-pointer border-b-2 border-slate-200"
         >
-          <span>{todo}</span> <button>❌</button>
+          <span className={`${todo.isComplete ? 'line-through text-[#ccc]':""}`}> {todo.text}</span>{""} 
+          
+          <DeleteButton id={todo.id} setTodos={setTodos}/>
         </li>
       ))}
     </ul>
