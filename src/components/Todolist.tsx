@@ -2,6 +2,9 @@ import DeleteButton from "./DeleteButton";
 export default function Todolist({todos, setTodos}) {
   return (
     <ul>
+      {
+        todos.length === 0 && <li className="text-center font-bold text-black/30 h-full pt-[40%] text-xl">Start by adding new list</li>}
+
       {todos.map((todo) => (
         <li
           key={todo.id}
