@@ -1,11 +1,11 @@
 import Counter from "./Counter";
 import Logo from "./Logo";
 
-export default function Header({totalTodosNumber, completedTodosCount}) {
+export default function Header({todos}) {
   return (
     <header className="flex justify-between items-center px-[28px] col-[1/3] row-[1/2] bg-[#fbf5ed] border-b-2 border-slate-200">
       <Logo />
-      <Counter totalTodosNumber={totalTodosNumber} completedTodosCount={completedTodosCount}/>
+      <Counter todos={todos}/>
     </header>
   );
 }
