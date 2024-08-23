@@ -1,10 +1,10 @@
-export default function DeleteButton({id, setTodos}) { 
+export default function DeleteButton({id,handlerDeleteTodo}) { 
 
   return (
     <button
           onClick={(e) => {
             e.stopPropagation();
-            setTodos((prev) => prev.filter((todo) => todo.id !== id))
+            handlerDeleteTodo(id)
           }}
           >❌</button>
   )

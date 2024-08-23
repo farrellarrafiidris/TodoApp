@@ -1,5 +1,5 @@
 import DeleteButton from "./DeleteButton";
-export default function Todolist({todos, setTodos}) {
+export default function Todolist({todos, handlerToggleTodo, handlerDeleteTodo}) {
   return (
     <ul>
       {
@@ -9,19 +9,15 @@ export default function Todolist({todos, setTodos}) {
         <li
           key={todo.id}
           className="flex justify-between items-center px-8 h-[50px] text-[14px] cursor-pointer border-b-2 border-slate-200"
-          onClick={() => {
-            setTodos(
-              todos.map((t) => {
-                if (t.id === todo.id) {
-                  return { ...t, isComplete: !t.isComplete };
-                }
-                return t;
-              })
-            );
-          }}
+          onClick={
+            () => {
+              handlerToggleTodo(todo.id)
+              console.log(todo)
+            }
+          }
         >
           <span
-            className={`${todo.isComplete ? "line-through text-[#ccc]" : ""}`}
+            className={`${todo.isCompleted ? "line-through text-[#ccc]" : ""}`}
           >
             {" "}
             {todo.text}
@@ -30,7 +26,7 @@ export default function Todolist({todos, setTodos}) {
 
           <DeleteButton
             id={todo.id}
-            setTodos={setTodos}
+            handlerDeleteTodo={handlerDeleteTodo}
           />
         </li>
       ))}

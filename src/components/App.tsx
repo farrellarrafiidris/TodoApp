@@ -23,6 +23,20 @@ function App() {
       ]);
     }
   };
+
+  const handlerToggleTodo = (id) => {
+    setTodos(todos.map((todo) => {
+      console.log("Data telah sampai");
+        if (todo.id === id) {
+            return { ...todo, isCompleted: !todo.isCompleted };
+        }
+        return todo;
+    }));
+};
+
+  const handlerDeleteTodo = (id) => {
+    setTodos((prev) => prev.filter((todo) => todo.id !== id));
+  }
   
 
   return (
@@ -34,7 +48,8 @@ function App() {
           <Header todos={todos} />
           <Todolist
             todos={todos}
-            setTodos={setTodos}
+            handlerToggleTodo={handlerToggleTodo}
+            handlerDeleteTodo={handlerDeleteTodo}
           />
           <Sidebar
             todos={todos}
@@ -48,5 +63,5 @@ function App() {
   );
 }
 // https://www.youtube.com/watch?v=J3aFEqouK44
-// 1:26:35
+// 2:43:23
 export default App;
