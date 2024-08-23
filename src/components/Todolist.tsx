@@ -1,5 +1,13 @@
+import { Todo } from "../lib/types";
 import DeleteButton from "./DeleteButton";
-export default function Todolist({todos, handlerToggleTodo, handlerDeleteTodo}) {
+
+type TodoListProps = {
+  todos: Todo[] ,
+  handlerToggleTodo: (id:number) => void
+  handlerDeleteTodo: (id:number) => void
+
+}
+export default function Todolist({todos, handlerToggleTodo, handlerDeleteTodo} : TodoListProps) {
   return (
     <ul>
       {

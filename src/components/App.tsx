@@ -4,11 +4,17 @@ import Footer from "./Footer";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Todolist from "./Todolist";
+import { Todo } from "../lib/types";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
 
-  const handlerAddTodos = (todoText) => {
+  const totalNumberTodos = todos.length
+  const numberOfCompletedTodos = todos.filter(
+    (todo) => todo.isCompleted
+  ).length;
+
+  const handlerAddTodos = (todoText:string) => {
     if (todos.length >= 3) {
       alert("You have to login for add more list");
       return;
@@ -16,7 +22,7 @@ function App() {
       setTodos((prev) => [
         ...prev,
         {
-          id: prev + 1,
+          id: prev.length + 1,
           text: todoText,
           isCompleted: false,
         },
@@ -24,7 +30,7 @@ function App() {
     }
   };
 
-  const handlerToggleTodo = (id) => {
+  const handlerToggleTodo = (id: number) => {
     setTodos(todos.map((todo) => {
       console.log("Data telah sampai");
         if (todo.id === id) {
@@ -34,7 +40,7 @@ function App() {
     }));
 };
 
-  const handlerDeleteTodo = (id) => {
+  const handlerDeleteTodo = (id: number) => {
     setTodos((prev) => prev.filter((todo) => todo.id !== id));
   }
   
@@ -45,14 +51,13 @@ function App() {
       {/* todolist */}
       <div>
         <main className="relative w-[972px] h-[636px] bg-white rounded-[8px] shadow-[0_4px_4px_rgba_(0.0.0.0.08)] grid grid-cols-[7fr_4fr] grid-rows-[59px_1fr] overflow-hidden">
-          <Header todos={todos} />
+          <Header totalNumberTodos={totalNumberTodos} numberOfCompletedTodos={numberOfCompletedTodos} />
           <Todolist
             todos={todos}
             handlerToggleTodo={handlerToggleTodo}
             handlerDeleteTodo={handlerDeleteTodo}
           />
           <Sidebar
-            todos={todos}
             handlerAddTodos={handlerAddTodos}
           />
           {/* footer */}
@@ -63,5 +68,5 @@ function App() {
   );
 }
 // https://www.youtube.com/watch?v=J3aFEqouK44
-// 2:43:23
+// 3:40:36
 export default App;

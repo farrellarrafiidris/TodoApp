@@ -1,7 +1,11 @@
 import { useState } from "react";
 import Button from "./Button";
 
-export default function AddTodoForm({handlerAddTodos }) {
+type AddTodoFormProps = {
+  handlerAddTodos: (todoText: string) => void;
+}
+
+export default function AddTodoForm({handlerAddTodos} : AddTodoFormProps) {
   const [todoText, setTodoText] = useState("");
   return (
     <form
@@ -20,7 +24,7 @@ export default function AddTodoForm({handlerAddTodos }) {
         placeholder="Enter new list"
         required
       />
-      <Button buttonType="">Add To List</Button>
+      <Button buttonType="primary">Add To List</Button>
     </form>
   );
 }

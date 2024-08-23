@@ -1,4 +1,9 @@
-export default function DeleteButton({id,handlerDeleteTodo}) { 
+
+type ButtonDeleteProps ={
+  id : number,
+  handlerDeleteTodo: (id : number) => void
+}
+export default function DeleteButton({id,handlerDeleteTodo}: ButtonDeleteProps) { 
 
   return (
     <button
