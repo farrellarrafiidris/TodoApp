@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { Todo } from "../lib/types";
+import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 
 type TodoContextProviderProps = {
   children: React.ReactNode;
@@ -20,6 +21,8 @@ export default function TodoContextProvider({
   children,
 }: TodoContextProviderProps) {
 
+  const {isAuthenticated} = useKindeAuth()
+
   const getInitialTodos = () => {
     const savedTodos = localStorage.getItem("todos");
     if (savedTodos) {
@@ -38,7 +41,7 @@ export default function TodoContextProvider({
   ).length;
 
   const handlerAddTodos = (todoText: string) => {
-    if (todos.length >= 3) {
+    if (todos.length >= 3 && !isAuthenticated ) {
       alert("You have to login for add more list");
       return;
     } else {
