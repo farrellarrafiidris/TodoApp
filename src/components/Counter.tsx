@@ -1,12 +1,8 @@
-import { useContext } from "react";
-import { TodosContext } from "../context/TodoContextProvider";
-
-type CounterProps = {
-  totalNumberTodos:number
-  numberOfCompletedTodos:number
- };
+import { useTodosContext } from "../lib/hooks";
 export default function Counter() {
-  const {numberOfCompletedTodos, totalNumberTodos} = useContext(TodosContext);
+
+
+  const {numberOfCompletedTodos, totalNumberTodos} = useTodosContext();
   return (
     <p>
       <b>{numberOfCompletedTodos }</b> / {totalNumberTodos} Completed

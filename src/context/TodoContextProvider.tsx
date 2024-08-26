@@ -1,11 +1,20 @@
-import { Children, createContext, useState } from "react";
+import {createContext, useState } from "react";
 import { Todo } from "../lib/types";
 
 type TodoContextProviderProps = {
   children: React.ReactNode
 }
 
-export const TodosContext = createContext(null);
+export const TodosContext = createContext<TTodosContext | null >(null);
+
+type TTodosContext = { 
+  todos: Todo[],
+  totalNumberTodos: number,
+  numberOfCompletedTodos: number,
+  handlerAddTodos: (todoText: string) => void,
+  handlerToggleTodo: (id: number) => void,
+  handlerDeleteTodo: (id: number) => void,
+};
 
 export default function TodoContextProvider({children}:TodoContextProviderProps) {
   const [todos, setTodos] = useState<Todo[]>([]);

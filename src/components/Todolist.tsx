@@ -1,10 +1,8 @@
-import { useContext } from "react";
-import { Todo } from "../lib/types";
 import DeleteButton from "./DeleteButton";
-import { TodosContext } from "../context/TodoContextProvider";
+import { useTodosContext } from "../lib/hooks";
 
 export default function Todolist() {
-  const {todos, handlerToggleTodo, handlerDeleteTodo} = useContext(TodosContext);
+  const {todos, handlerToggleTodo, handlerDeleteTodo} = useTodosContext();
   return (
     <ul>
       {
