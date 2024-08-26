@@ -1,13 +1,10 @@
+import { useContext } from "react";
 import { Todo } from "../lib/types";
 import DeleteButton from "./DeleteButton";
+import { TodosContext } from "../context/TodoContextProvider";
 
-type TodoListProps = {
-  todos: Todo[] ,
-  handlerToggleTodo: (id:number) => void
-  handlerDeleteTodo: (id:number) => void
-
-}
-export default function Todolist({todos, handlerToggleTodo, handlerDeleteTodo} : TodoListProps) {
+export default function Todolist() {
+  const {todos, handlerToggleTodo, handlerDeleteTodo} = useContext(TodosContext);
   return (
     <ul>
       {
