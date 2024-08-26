@@ -20,6 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           ? "https://todo-app-by-byte-grad.vercel.app"
           : "http://localhost:5173"
       }
+      isDangerouslyUseLocalStorage={true}
     >
       <TodoContextProvider>
         <App />
